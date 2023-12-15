@@ -1,0 +1,49 @@
+service: recipebackend
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  region: us-east-2
+  runtime: nodejs18.x
+  environment:
+    RECIPE_TABLE: recipes-${sls:stage}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - "dynamodb:BatchGetItem"
+            - "dynamodb:BatchWriteItem"
+            - "dynamodb:PutItem"
+            - "dynamodb:DeleteItem"
+            - "dynamodb:GetItem"
+            - "dynamodb:Scan"
+            - "dynamodb:Query"
+            - "dynamodb:UpdateItem"
+          Resource:
+            - "arn:aws:dynamodb:*:150488752423:table/recipes*"
+        - Effect: Allow
+          Action:
+            - "dynamodb:ListTables"
+          Resource:
+            - "*"
+functions:
+  recipes:
+    handler: handler.handler
+    events:
+      - http:
+          path: recipes/{id}
+          method: get
+      - http:
+          path: recipes/{id}
+          method: delete
+      - http:
+          path: recipes/new
+          method: put
+      - http:
+          path: recipes/update
+          method: put
