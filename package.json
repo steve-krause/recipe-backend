@@ -1,0 +1,27 @@
+{
+  "name": "recipe-backend",
+  "version": "1.0.0",
+  "description": "REST API for the Recipe application",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc; cd dist; rm handler.zip; zip -r handler * -x serverless.yml",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Steve Krause",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.130",
+    "@types/uuid": "^9.0.7",
+    "aws-lambda": "^1.0.7",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.474.0",
+    "@aws-sdk/client-lambda": "^3.474.0",
+    "@aws-sdk/lib-dynamodb": "^3.474.0",
+    "@aws-sdk/types": "^3.468.0",
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
+  }
+}
