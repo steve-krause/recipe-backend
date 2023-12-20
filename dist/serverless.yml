@@ -38,12 +38,16 @@ functions:
       - http:
           path: recipes/{id}
           method: get
+          cors: true
       - http:
           path: recipes/{id}
           method: delete
+          cors: true
       - http:
           path: recipes/new
           method: put
+          cors: true
       - http:
           path: recipes/update
           method: put
+          cors: true

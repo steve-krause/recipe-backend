@@ -4,7 +4,8 @@
   "description": "REST API for the Recipe application",
   "main": "index.js",
   "scripts": {
-    "build": "tsc; cd dist; rm handler.zip; zip -r handler * -x serverless.yml",
+    "build": "tsc",
+    "deploy-dev": "cd dist; sls deploy --stage=dev --verbose; cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

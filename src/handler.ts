@@ -39,7 +39,7 @@ const tableName = "recipes";
 export const handler: Handler = async (event: APIGatewayProxyEvent) => {
   let body;
   let statusCode = 200;
-  const headers = { "Content-Type": "application/json" };
+  const headers = { "Content-Type": "application/json", "Access-Control-Allow-Origin": "http://recipe-first-test.s3-website.us-east-2.amazonaws.com" };
 
   console.log(JSON.stringify(event, null, 2));
 
